@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0svl3kdtshop"]
+
+[ext_resource type="Script" uid="uid://hbb1xyqj31m0" path="res://prototypes/001_PerspectiveView/perspective_view.gd" id="1_1b8i0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_himb8"]
+
+[node name="PerspectiveView" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_1b8i0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_himb8")
+
+[node name="Angle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="Angle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Angle/Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

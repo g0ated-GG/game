@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bewxb2eqcdrxl"]
+
+[ext_resource type="PackedScene" uid="uid://c0svl3kdtshop" path="res://prototypes/001_PerspectiveView/perspective_view.tscn" id="1_2f6n1"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pi2pe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2f6n1"]
+
+[sub_resource type="Sky" id="Sky_2hlyf"]
+sky_material = SubResource("ProceduralSkyMaterial_2f6n1")
+
+[sub_resource type="Environment" id="Environment_b6oe3"]
+background_mode = 2
+sky = SubResource("Sky_2hlyf")
+
+[node name="Scene" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(16, 0.2, 16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_pi2pe")
+
+[node name="PerspectiveView" parent="." instance=ExtResource("1_2f6n1")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b6oe3")
